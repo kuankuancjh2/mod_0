@@ -1,24 +1,47 @@
 package com.example.pipemod;
 
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.Mod;
-import net.neoforged.neoforge.registries.DeferredRegister;
-import net.neoforged.neoforge.registries.DeferredHolder;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.common.util.LazyOptional;
+import net.neoforged.neoforge.fluids.FluidType;
+import net.neoforged.neoforge.fluids.capability.IFluidHandler;
+import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-@Mod.EventBusSubscriber(modid = "pipemod", bus = Mod.EventBusSubscriber.Bus.MOD)
-public class ModBlockEntities {
-    // 注册表
-    public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES =
-        DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, "pipemod");
+public class PipeBlockEntity extends BlockEntity {
+    private final FluidTank tank = new FluidTank(4 * FluidType.BUCKET_VOLUME) {
+        @Override
+        protected void onContentsChanged() {
+            super.onContentsChanged();
+            if (level != null) {
+                level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
+            }
+        }
+    };
 
-    // 注册 PipeBlockEntity
-    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PipeBlockEntity>> PIPE =
-        BLOCK_ENTITIES.register("pipe", () ->
-            BlockEntityType.Builder.of(PipeBlockEntity::new, ModBlocks.PIPE.get()).build(null)
-        );
+    public PipeBlockEntity(BlockPos pos, BlockState state) {
+        super(ModBlockEntities.PIPE.get(), pos, state);
+    }
 
-    // 在 ModMain 或 ModInit 类中调用：
-    // ModBlockEntities.BLOCK_ENTITIES.register(eventBus);
+    public FluidTank getTank() {
+        return tank;
+    }
+
+    @Override
+    protected void saveAdditional(CompoundTag tag) {
+        super.saveAdditional(tag);
+        tag.put("tank", tank.writeToNBT(new CompoundTag()));
+    }
+
+    @Override
+    public void load(CompoundTag tag) {
+        super.load(tag);
+        if (tag.contains("tank")) {
+            tank.readFromNBT(tag.getCompound("tank"));
+        }
+    }
 }

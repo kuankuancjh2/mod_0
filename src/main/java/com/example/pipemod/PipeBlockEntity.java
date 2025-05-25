@@ -1,41 +1,20 @@
 package com.example.pipemod;
 
-import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
-import net.neoforged.neoforge.capabilities.Capabilities;
-import org.jetbrains.annotations.Nullable;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
-public class PipeBlockEntity extends BlockEntity {
-    private final FluidTank tank = new FluidTank(4000); // 4桶容量
+public class ModBlockEntities {
+    public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES =
+        DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, PipeMod.MODID);
 
-    public PipeBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.PIPE.get(), pos, state);
-    }
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PipeBlockEntity>> PIPE =
+        BLOCK_ENTITIES.register("pipe", () -> 
+            BlockEntityType.Builder.of(PipeBlockEntity::new, ModBlocks.PIPE_BLOCK.get()).build(null));
 
-    public FluidTank getTank() {
-        return tank;
-    }
-
-    @Override
-    protected void saveAdditional(CompoundTag tag) {
-        super.saveAdditional(tag);
-        tag.put("tank", tank.writeToNBT(new CompoundTag()));
-    }
-
-    @Override
-    public void load(CompoundTag tag) {
-        super.load(tag);
-        tank.readFromNBT(tag.getCompound("tank"));
-    }
-
-    @Override
-    public <T> @Nullable T getCapability(net.minecraft.core.Direction side, net.minecraft.core.component.ComponentPath path, Class<T> cap) {
-        if (cap == Capabilities.FluidHandler.BLOCK) {
-            return cap.cast(tank);
-        }
-        return super.getCapability(side, path, cap);
+    public static void register(IEventBus eventBus) {
+        BLOCK_ENTITIES.register(eventBus);
     }
 }
