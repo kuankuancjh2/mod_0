@@ -1,0 +1,21 @@
+{
+  "textures": {
+      "main": "block/main"
+  },
+  "elements": [
+		{
+			"name": "pipe_up",
+			"from": [5, 12, 5],
+			"to": [11, 16, 11],
+			"rotation": {"angle": 0, "axis": "z", "origin": [8, 8, 8]},
+			"faces": {
+				"north": {"uv": [2, 0, 14, 16], "rotation": 270, "texture": "#main"},
+				"east": {"uv": [16, 14, 0, 2], "texture": "#main"},
+				"south": {"uv": [2, 0, 14, 16], "rotation": 90, "texture": "#main"},
+				"west": {"uv": [16, 2, 0, 14], "rotation": 180, "texture": "#main"},
+				"up": {"uv": [0, 0, 16, 16], "rotation": 90, "texture": "#main", "cullface": "north"},
+				"down": {"uv": [0, 0, 16, 16], "rotation": 90, "texture": "#main", "cullface": "north"}
+			}
+		}
+  ]
+}

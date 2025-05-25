@@ -1,0 +1,12 @@
+{
+    "multipart": [
+      { "apply": { "model": "pipemod:block/pipe_center" } },
+      { "when": { "north": true }, "apply": { "model": "pipemod:block/pipe_north" } },
+      { "when": { "south": true }, "apply": { "model": "pipemod:block/pipe_south" } },
+      { "when": { "west":  true }, "apply": { "model": "pipemod:block/pipe_west"  } },
+      { "when": { "east":  true }, "apply": { "model": "pipemod:block/pipe_east"  } },
+      { "when": { "up":    true }, "apply": { "model": "pipemod:block/pipe_up"    } },
+      { "when": { "down":  true }, "apply": { "model": "pipemod:block/pipe_down"  } }
+    ]
+  }
+  
