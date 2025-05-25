@@ -1,21 +1,21 @@
 {
   "textures": {
-      "main": "block/main"
+      "pipe": "block/pipe"
   },
   "elements": [
-		{
-			"name": "pipe_east",
-			"from": [12, 5, 5],
-			"to": [16, 11, 11],
-			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 8]},
-			"faces": {
-				"north": {"uv": [2, 0, 14, 16], "rotation": 180, "texture": "#main"},
-				"east": {"uv": [0, 0, 16, 16], "rotation": 180, "texture": "#main", "cullface": "north"},
-				"south": {"uv": [2, 0, 14, 16], "rotation": 180, "texture": "#main"},
-				"west": {"uv": [0, 0, 16, 16], "rotation": 180, "texture": "#main", "cullface": "north"},
-				"up": {"uv": [16, 2, 0, 14], "rotation": 270, "texture": "#main"},
-				"down": {"uv": [16, 14, 0, 2], "rotation": 90, "texture": "#main"}
-			}
+	{
+		"name": "pipe_south",
+		"from": [5, 5, 12],
+		"to": [11, 11, 16],
+		"rotation": {"angle": 0, "axis": "x", "origin": [8, 8, 8]},
+		"faces": {
+			"north": {"uv": [0, 0, 16, 16], "rotation": 180, "texture": "#pipe", "cullface": "south"},
+			"east": {"uv": [2, 0, 14, 16], "rotation": 180, "texture": "#pipe"},
+			"south": {"uv": [0, 0, 16, 16], "rotation": 180, "texture": "#pipe", "cullface": "south"},
+			"west": {"uv": [2, 0, 14, 16], "rotation": 180, "texture": "#pipe"},
+			"up": {"uv": [16, 2, 0, 14], "texture": "#pipe"},
+			"down": {"uv": [16, 14, 0, 2], "texture": "#pipe"}
 		}
-  ]
+	}
+]
 }
