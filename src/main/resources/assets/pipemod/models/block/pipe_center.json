@@ -1,6 +1,7 @@
 {
-    "textures": {
-        "pipe": "block/pipe"
+	"textures": {
+        "pipe": "pipemod:block/pipe",
+   	    "particle": "pipemod:block/pipe"
     },
     "elements": [
 		{

@@ -1,6 +1,7 @@
 {
+	"texture_size": [2, 2],
   "textures": {
-      "pipe": "block/pipe"
+      "pipe": "pipemod:block/pipe"
   },
   "elements": [
 	{
@@ -9,12 +10,12 @@
 		"to": [11, 11, 16],
 		"rotation": {"angle": 0, "axis": "x", "origin": [8, 8, 8]},
 		"faces": {
-			"north": {"uv": [0, 0, 16, 16], "rotation": 180, "texture": "#pipe", "cullface": "south"},
-			"east": {"uv": [2, 0, 14, 16], "rotation": 180, "texture": "#pipe"},
-			"south": {"uv": [0, 0, 16, 16], "rotation": 180, "texture": "#pipe", "cullface": "south"},
-			"west": {"uv": [2, 0, 14, 16], "rotation": 180, "texture": "#pipe"},
-			"up": {"uv": [16, 2, 0, 14], "texture": "#pipe"},
-			"down": {"uv": [16, 14, 0, 2], "texture": "#pipe"}
+			"north": {"uv": [0, 0, 8, 8], "rotation": 180, "texture": "#pipe", "cullface": "south"},
+			"east": {"uv": [1, 0, 7, 8], "rotation": 180, "texture": "#pipe"},
+			"south": {"uv": [0, 0, 8, 8], "rotation": 180, "texture": "#pipe", "cullface": "south"},
+			"west": {"uv": [1, 0, 7, 8], "rotation": 180, "texture": "#pipe"},
+			"up": {"uv": [8, 1, 0, 7], "texture": "#pipe"},
+			"down": {"uv": [8, 7, 0, 2], "texture": "#pipe"}
 		}
 	}
 ]

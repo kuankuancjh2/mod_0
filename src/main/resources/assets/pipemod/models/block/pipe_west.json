@@ -1,6 +1,6 @@
 {
     "textures": {
-        "pipe": "block/pipe"
+        "pipe": "pipemod:block/pipe"
     },
     "elements": [
 		{

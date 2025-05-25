@@ -1,6 +1,6 @@
 {
   "textures": {
-      "pipe": "block/pipe"
+      "main": "pipemod:block/pipe"
   },
   "elements": [
 		{
@@ -9,12 +9,12 @@
 			"to": [11, 11, 4],
 			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 8]},
 			"faces": {
-				"north": {"uv": [0, 0, 16, 16], "texture": "#pipe", "cullface": "north"},
-				"east": {"uv": [2, 0, 14, 16], "texture": "#pipe"},
-				"south": {"uv": [0, 0, 16, 16], "texture": "#pipe", "cullface": "north"},
-				"west": {"uv": [2, 0, 14, 16], "texture": "#pipe"},
-				"up": {"uv": [16, 14, 0, 2], "texture": "#pipe"},
-				"down": {"uv": [16, 2, 0, 14], "texture": "#pipe"}
+				"north": {"uv": [0, 0, 16, 16], "texture": "#main", "cullface": "north"},
+				"east": {"uv": [2, 0, 14, 16], "texture": "#main"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#main", "cullface": "north"},
+				"west": {"uv": [2, 0, 14, 16], "texture": "#main"},
+				"up": {"uv": [16, 14, 0, 2], "texture": "#main"},
+				"down": {"uv": [16, 2, 0, 14], "texture": "#main"}
 			}
 		}
   ]

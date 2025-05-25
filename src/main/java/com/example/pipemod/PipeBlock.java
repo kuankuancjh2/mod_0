@@ -29,14 +29,14 @@ public class PipeBlock extends Block {
     };
 
     // 中心柱形状 (4x4像素粗细，Minecraft中一个方块是16x16像素)
-    private static final VoxelShape CENTER_SHAPE = Block.box(6, 0, 6, 10, 16, 10);
-    private static final VoxelShape NORTH_SHAPE = Block.box(6, 0, 0, 10, 16, 6);
-    private static final VoxelShape SOUTH_SHAPE = Block.box(6, 0, 10, 10, 16, 16);
-    private static final VoxelShape WEST_SHAPE  = Block.box(0, 0, 6, 6, 16, 10);
-    private static final VoxelShape EAST_SHAPE  = Block.box(10, 0, 6, 16, 16, 10);
-    private static final VoxelShape UP_SHAPE    = Block.box(6, 10, 6, 10, 16, 10);
-    private static final VoxelShape DOWN_SHAPE  = Block.box(6, 0, 6, 10, 6, 10);
-
+    private static final VoxelShape CENTER_SHAPE = Block.box(4, 4, 4, 12, 12, 12);
+    private static final VoxelShape NORTH_SHAPE = Block.box(5, 5, 0, 11, 11, 4);
+    private static final VoxelShape SOUTH_SHAPE = Block.box(5, 5, 12, 11, 11, 16);
+    private static final VoxelShape WEST_SHAPE  = Block.box(0, 5, 5, 4, 11, 11);
+    private static final VoxelShape EAST_SHAPE  = Block.box(12, 5, 5, 16, 11, 11);
+    private static final VoxelShape UP_SHAPE    = Block.box(5, 12, 5, 11, 16, 11);
+    private static final VoxelShape DOWN_SHAPE  = Block.box(5, 0, 5, 11, 4, 11);
+    
     public PipeBlock() {
         super(BlockBehaviour.Properties.of().strength(0.5f));
         this.registerDefaultState(this.stateDefinition.any()
